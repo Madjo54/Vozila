@@ -24,5 +24,21 @@ namespace Vozila.Pages.VozilaLista
         {
             Vozila = await _db.Vozilo.ToListAsync();
         }
+
+        public async Task<IActionResult> OnPostObrisi(int id)
+        {
+
+            var vozilo = await _db.Vozilo.FindAsync(id);
+            if(vozilo == null)
+            {
+
+                return NotFound();
+            }
+            _db.Vozilo.Remove(vozilo);
+            await _db.SaveChangesAsync();
+
+            return RedirectToPage("Index");
+        }
+
     }
 }

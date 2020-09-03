@@ -9,7 +9,7 @@
 
 <div class="container row p-0 m-0">
     <div class="col-9">
-        <h2 class="text-info">Popis</h2>
+        <h3 class="text-info">Pregled</h3>
     </div>
     <div class="col-3">
         <a asp-page="Unos" class="btn btn-info form-control text-light">Unesi novo vozilo</a>
@@ -52,10 +52,11 @@
                             <td>@Html.DisplayFor(m => redak.Tip)</td>
                             <td>@Html.DisplayFor(m => redak.Sasija)</td>
                             <td>
-                                <button class="btn btn-danger btn-sm">Briši</button>                                
+                                <button asp-page-handler="Obrisi" asp-route-id="@redak.Id" onclick="return confirm('da li ste sigurni da želite obrisati?')"class="btn btn-danger btn-sm">Briši</button>                                
                             </td>
                             <td>
-                                <a class="btn btn-success btn-sm text-light">Izmjeni</a>
+                                
+                                <a asp-page="Izmjeni" asp-route-Id="@redak.Id" class="btn btn-success btn-sm text-light">Izmjeni</a>
                             </td>
                         </tr>
                     }
